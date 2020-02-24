@@ -28,5 +28,51 @@ export function makeHero(x = 0, y = 0, z = 0) {
     // Put it on top of the box, also pull it up by half it's size
     head.position.set(0, bodyUnit + (headUnit / 2), 0);
 
-    return heroPivot;
+    heroPivot.position.set(x, y, z);
+    const scalarFactor = 0.6;
+    heroPivot.scale.set(scalarFactor, scalarFactor, scalarFactor);
+
+    const movementUnit = 1;
+    const HeroInterface = {
+        addOnMoveListener(listener) {
+            this.listeners.push(listener);
+        },
+        _notifyListeners() {
+            this.listeners.forEach(listener => {
+                if (typeof listener.onMove === 'function') {
+                    listener.onMove(heroPivot.position);
+                }
+            });
+        },
+        set moveUp(shouldMove) {
+            heroPivot.position.y += movementUnit;
+            this._notifyListeners();
+        },
+        set moveDown(shouldMove) {
+            heroPivot.position.y -= movementUnit;
+            this._notifyListeners();
+        },
+        set moveRight(shouldMove) {
+            heroPivot.position.x += movementUnit;
+            this._notifyListeners();
+        },
+        set moveLeft(shouldMove) {
+            heroPivot.position.x -= movementUnit;
+            this._notifyListeners();
+        },
+        set moveForward(shouldMove) {
+            heroPivot.position.z -= movementUnit;
+            this._notifyListeners();
+        },
+        set moveBackward(shouldMove) {
+            heroPivot.position.z += movementUnit;
+            this._notifyListeners();
+        }
+    };
+
+    Object.setPrototypeOf(HeroInterface, heroPivot);
+
+    return Object.setPrototypeOf({
+        listeners: []
+    },HeroInterface);
 }

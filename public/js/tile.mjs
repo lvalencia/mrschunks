@@ -1,16 +1,23 @@
 import {THREE} from "./dependencies/three.mjs";
 import {Color} from "./color.mjs";
 
+const {
+    MathUtils: {
+        degToRad,
+        radToDeg
+    }
+} = THREE;
+
 // Keep it stupid simple because you'll probably be swapping these out with Textures
 // lets make a 10x10 board of squares
-const defaultRotation = 3 * Math.PI / 2;
+const defaultRotation = degToRad(90);
 
 /*
  * @TODO
  *  Would actually make an object that presents an abstraction for a tile interface with commands like
  *  flip, bounce, shake, etc
 */
-export function makeTile(x, y, z, tileRotation = defaultRotation) {
+export function makeTile(x = 0, y = 0, z = 0, tileRotation = defaultRotation) {
     const unit = 1;
     const planeBufferGeometry = new THREE.PlaneBufferGeometry(unit, unit, unit, unit);
 
@@ -34,6 +41,13 @@ export function makeTile(x, y, z, tileRotation = defaultRotation) {
     tilePivot.position.set(x, y, z);
     tilePivot.rotation.x = tileRotation;
 
-    return tilePivot;
+    const TileInterface = {
+        flip() {
+            tilePivot.rotation.x = degToRad((radToDeg(tilePivot.rotation.x) + 180) % 360);
+        }
+    };
+    Object.setPrototypeOf(TileInterface, tilePivot);
+
+    return Object.create(TileInterface);
 }
 

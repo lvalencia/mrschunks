@@ -5,6 +5,8 @@ import * as dat from './dependencies/dat.gui.mjs';
 import {AxisGridHelper} from './helpers/axisGridHelper.mjs';
 import {makeTile} from "./tile.mjs";
 import {makeHero} from "./hero.js";
+import {attachControls} from "./heroControls.mjs";
+import {makeBoard} from "./board.mjs";
 
 const canvas = document.getElementById('scene');
 const context = canvas.getContext('webgl2');
@@ -57,25 +59,27 @@ function makeAxisGrid(node, label, units) {
     gui.add(helper, 'visible').name(label);
 }
 
-const board = new THREE.Object3D();
+const board = makeBoard();
 makeAxisGrid(board, 'board');
 scene.add(board);
 const tiles = [];
-for (let x = -5; x < 5; x++) {
-    for (let z = -5; z < 5; z++) {
+for (let x = -5; x <= 5; x++) {
+    for (let z = -5; z <= 5; z++) {
         const tile = makeTile(x, 0, z);
         tiles.push(tile);
-        board.add(tile);
+        board.addTile(tile);
     }
 }
 
-const hero = makeHero(0, 0.1, 0);
+const hero = makeHero(-5, 0.1, 5);
 scene.add(hero);
-
+makeAxisGrid(hero, 'hero');
+attachControls(hero);
+hero.addOnMoveListener(board);
 // Flip some Tiles
 tiles.forEach((tile, index) => {
     if (index % 3 === 0) {
-        tile.rotation.x = -3 * Math.PI / 2;
+        tile.flip();
     }
 });
 
