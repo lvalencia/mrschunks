@@ -44,6 +44,10 @@ export function makeTile(x = 0, y = 0, z = 0, tileRotation = defaultRotation) {
     const TileInterface = {
         flip() {
             tilePivot.rotation.x = degToRad((radToDeg(tilePivot.rotation.x) + 180) % 360);
+            this.__hasBeenFlippedAtLeastOnce = true;
+        },
+        get previouslyFlipped() {
+           return this.__hasBeenFlippedAtLeastOnce;
         },
         get topColor() {
             return topPlaneMaterial.color;

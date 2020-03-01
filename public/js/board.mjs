@@ -32,7 +32,7 @@ export function makeBoard(x = 0, y = 0, z = 0) {
     return Object.setPrototypeOf({
         _boardTiles: [],
         _tileFlipper: Object.setPrototypeOf({
-            _behavior: FlipBehavior.Adjacent
+            _behavior: FlipBehavior.Current
         }, TileFlipper)
     }, BoardInterface);
 }
