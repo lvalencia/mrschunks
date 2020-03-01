@@ -1,7 +1,56 @@
 import {THREE} from "./dependencies/three.mjs";
 import {Color} from "./color.mjs";
 
+const UNIT_OF_MOVEMENT = 1;
 
+export const Hero = {
+    addOnMoveListener(listener) {
+        this.listeners.push(listener);
+    },
+    _notifyListeners() {
+        this.listeners.forEach(listener => {
+            if (typeof listener.onMove === 'function') {
+                listener.onMove(this.position);
+            }
+        });
+    },
+    set moveUp(shouldMove) {
+        if (shouldMove) {
+            this.position.y += this.movementUnit;
+            this._notifyListeners();
+        }
+    },
+    set moveDown(shouldMove) {
+        if (shouldMove) {
+            this.position.y -= this.movementUnit;
+            this._notifyListeners();
+        }
+    },
+    set moveRight(shouldMove) {
+        if (shouldMove) {
+            this.position.x += this.movementUnit;
+            this._notifyListeners();
+        }
+    },
+    set moveLeft(shouldMove) {
+        if (shouldMove) {
+            this.position.x -= this.movementUnit;
+            this._notifyListeners();
+        }
+    },
+    set moveForward(shouldMove) {
+        if (shouldMove) {
+            this.position.z -= this.movementUnit;
+            this._notifyListeners();
+        }
+    },
+    set moveBackward(shouldMove) {
+        if (shouldMove) {
+            this.position.z += this.movementUnit;
+            this._notifyListeners();
+        }
+    }
+};
 // Keep it stupid simple because you'll probably be swapping these out with Textures
 // For now lets just make a box with a box head
 export function makeHero(x = 0, y = 0, z = 0) {
@@ -32,59 +81,12 @@ export function makeHero(x = 0, y = 0, z = 0) {
     const scalarFactor = 0.6;
     heroPivot.scale.set(scalarFactor, scalarFactor, scalarFactor);
 
-    const movementUnit = 1;
-    const HeroInterface = {
-        addOnMoveListener(listener) {
-            this.listeners.push(listener);
-        },
-        _notifyListeners() {
-            this.listeners.forEach(listener => {
-                if (typeof listener.onMove === 'function') {
-                    listener.onMove(heroPivot.position);
-                }
-            });
-        },
-        set moveUp(shouldMove) {
-            if (shouldMove) {
-                heroPivot.position.y += movementUnit;
-                this._notifyListeners();
-            }
-        },
-        set moveDown(shouldMove) {
-            if (shouldMove) {
-                heroPivot.position.y -= movementUnit;
-                this._notifyListeners();
-            }
-        },
-        set moveRight(shouldMove) {
-            if (shouldMove) {
-                heroPivot.position.x += movementUnit;
-                this._notifyListeners();
-            }
-        },
-        set moveLeft(shouldMove) {
-            if (shouldMove) {
-                heroPivot.position.x -= movementUnit;
-                this._notifyListeners();
-            }
-        },
-        set moveForward(shouldMove) {
-            if (shouldMove) {
-                heroPivot.position.z -= movementUnit;
-                this._notifyListeners();
-            }
-        },
-        set moveBackward(shouldMove) {
-            if (shouldMove) {
-                heroPivot.position.z += movementUnit;
-                this._notifyListeners();
-            }
-        }
-    };
-
-    Object.setPrototypeOf(HeroInterface, heroPivot);
+    Object.setPrototypeOf(Hero, heroPivot);
 
     return Object.setPrototypeOf({
+        movementUnit: UNIT_OF_MOVEMENT,
         listeners: []
-    }, HeroInterface);
+    }, Hero);
 }
+
+export default makeHero();

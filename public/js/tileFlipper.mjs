@@ -16,10 +16,10 @@ export const TileFlipper = {
 
             let boolAcc = false;
             if (this._flipAdjacent) {
-                const leftTile = x-1 === tx && z === tz;
-                const rightTile = x+1 === tx && z === tz;
-                const aboveTile = x === tx && z-1 === tz;
-                const belowTile = x === tx && z+1 === tz;
+                const leftTile = x - 1 === tx && z === tz;
+                const rightTile = x + 1 === tx && z === tz;
+                const aboveTile = x === tx && z - 1 === tz;
+                const belowTile = x === tx && z + 1 === tz;
                 const isAdjacentTile = leftTile || rightTile || aboveTile || belowTile;
 
                 boolAcc = boolAcc || isAdjacentTile;

@@ -42,14 +42,3 @@ export function TileFlipBehaviorHelper(tileFlipper) {
         }
     });
 }
-
-export function addTileFlipBehavior(gui, tileFlipper) {
-    const folder = gui.addFolder('Flip Behavior');
-    const tileFlipHelper = new TileFlipBehaviorHelper(tileFlipper);
-
-    folder.add(tileFlipHelper, 'adjacent');
-    folder.add(tileFlipHelper, 'current');
-    folder.add(tileFlipHelper, 'once');
-
-    folder.open();
-}

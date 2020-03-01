@@ -1,13 +1,11 @@
 import {THREE} from './dependencies/three.mjs';
 import {OrbitControls} from './dependencies/OrbitControls.js';
 import Stats from './dependencies/stats.mjs';
-import * as dat from './dependencies/dat.gui.mjs';
 import {makeTile} from "./tile.mjs";
 import {makeHero} from "./hero.js";
 import {attachControls} from "./heroControls.mjs";
-import {makeBoard} from "./board.mjs";
-import {TileColorHelper} from "./helpers/tileColorHelper.mjs";
-import {addTileFlipBehavior} from "./helpers/tileFlipBehaviorHelper.mjs";
+import board from "./board.mjs";
+import guiControlsHelper from "./helpers/guiControlsHelper.mjs";
 
 const canvas = document.getElementById('scene');
 const context = canvas.getContext('webgl2');
@@ -52,9 +50,6 @@ function adjustView({canvas, renderer, camera}) {
     }
 }
 
-const gui = new dat.GUI();
-
-const board = makeBoard();
 scene.add(board);
 const tiles = [];
 for (let x = -5; x <= 5; x++) {
@@ -64,11 +59,6 @@ for (let x = -5; x <= 5; x++) {
         board.addTile(tile);
     }
 }
-
-const tileColorHelper = new TileColorHelper(tiles);
-gui.addColor(tileColorHelper, 'topColor');
-gui.addColor(tileColorHelper, 'bottomColor');
-addTileFlipBehavior(gui, board._tileFlipper);
 
 const hero = makeHero(-5, 0.1, 5);
 scene.add(hero);
@@ -89,6 +79,9 @@ controls.update();
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(-1, 2, 4);
 scene.add(light);
+
+guiControlsHelper.addTiles(tiles);
+guiControlsHelper.addTileFlipBehavior(board._tileFlipper);
 
 let lastTick = 0;
 
