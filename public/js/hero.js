@@ -45,28 +45,40 @@ export function makeHero(x = 0, y = 0, z = 0) {
             });
         },
         set moveUp(shouldMove) {
-            heroPivot.position.y += movementUnit;
-            this._notifyListeners();
+            if (shouldMove) {
+                heroPivot.position.y += movementUnit;
+                this._notifyListeners();
+            }
         },
         set moveDown(shouldMove) {
-            heroPivot.position.y -= movementUnit;
-            this._notifyListeners();
+            if (shouldMove) {
+                heroPivot.position.y -= movementUnit;
+                this._notifyListeners();
+            }
         },
         set moveRight(shouldMove) {
-            heroPivot.position.x += movementUnit;
-            this._notifyListeners();
+            if (shouldMove) {
+                heroPivot.position.x += movementUnit;
+                this._notifyListeners();
+            }
         },
         set moveLeft(shouldMove) {
-            heroPivot.position.x -= movementUnit;
-            this._notifyListeners();
+            if (shouldMove) {
+                heroPivot.position.x -= movementUnit;
+                this._notifyListeners();
+            }
         },
         set moveForward(shouldMove) {
-            heroPivot.position.z -= movementUnit;
-            this._notifyListeners();
+            if (shouldMove) {
+                heroPivot.position.z -= movementUnit;
+                this._notifyListeners();
+            }
         },
         set moveBackward(shouldMove) {
-            heroPivot.position.z += movementUnit;
-            this._notifyListeners();
+            if (shouldMove) {
+                heroPivot.position.z += movementUnit;
+                this._notifyListeners();
+            }
         }
     };
 
@@ -74,5 +86,5 @@ export function makeHero(x = 0, y = 0, z = 0) {
 
     return Object.setPrototypeOf({
         listeners: []
-    },HeroInterface);
+    }, HeroInterface);
 }

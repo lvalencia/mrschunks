@@ -32,6 +32,9 @@ export function attachControls(hero) {
         onKeyUp(event) {
             this._setMovement(event, false);
         },
+        /*
+         * The Idea behind passing should move would be if we wanted to have like a stop animation
+         */
         _setMovement({keyCode}, shouldBeMoving) {
             switch (keyCode) {
                 case KeyCodes.Up:

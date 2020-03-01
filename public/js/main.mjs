@@ -2,11 +2,12 @@ import {THREE} from './dependencies/three.mjs';
 import {OrbitControls} from './dependencies/OrbitControls.js';
 import Stats from './dependencies/stats.mjs';
 import * as dat from './dependencies/dat.gui.mjs';
-import {AxisGridHelper} from './helpers/axisGridHelper.mjs';
 import {makeTile} from "./tile.mjs";
 import {makeHero} from "./hero.js";
 import {attachControls} from "./heroControls.mjs";
 import {makeBoard} from "./board.mjs";
+import {TileColorHelper} from "./helpers/tileColorHelper.mjs";
+import {addTileFlipBehavior} from "./helpers/tileFlipBehaviorHelper.mjs";
 
 const canvas = document.getElementById('scene');
 const context = canvas.getContext('webgl2');
@@ -53,14 +54,7 @@ function adjustView({canvas, renderer, camera}) {
 
 const gui = new dat.GUI();
 
-function makeAxisGrid(node, label, units) {
-    // x red, z blue, y green
-    const helper = new AxisGridHelper(node, units);
-    gui.add(helper, 'visible').name(label);
-}
-
 const board = makeBoard();
-makeAxisGrid(board, 'board');
 scene.add(board);
 const tiles = [];
 for (let x = -5; x <= 5; x++) {
@@ -71,9 +65,13 @@ for (let x = -5; x <= 5; x++) {
     }
 }
 
+const tileColorHelper = new TileColorHelper(tiles);
+gui.addColor(tileColorHelper, 'topColor');
+gui.addColor(tileColorHelper, 'bottomColor');
+addTileFlipBehavior(gui, board._tileFlipper);
+
 const hero = makeHero(-5, 0.1, 5);
 scene.add(hero);
-makeAxisGrid(hero, 'hero');
 attachControls(hero);
 hero.addOnMoveListener(board);
 // Flip some Tiles
@@ -92,6 +90,7 @@ light.position.set(-1, 2, 4);
 scene.add(light);
 
 let lastTick = 0;
+
 function animate(time) {
     time *= 0.001;
 

@@ -31,3 +31,8 @@ export function AxisGridHelper(node, units = 10, Three = THREE) {
 
     this.visible = false;
 }
+
+export function makeAxisGrid(gui, node, label, units) {
+    // x red, z blue, y green
+    gui.add(new AxisGridHelper(node, units), 'visible').name(label);
+}
