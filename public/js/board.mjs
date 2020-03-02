@@ -7,8 +7,11 @@ export const Board = {
         this.add(tile);
     },
     onMove(position) {
-        this._tileFlipper.flip(this._boardTiles, position);
         this._correctPosition(position);
+        if (!this._sameAsPreviousPosition(position)) {
+            this._tileFlipper.flip(this._boardTiles, position);
+        }
+        this._setAsPreviousPosition(position);
     },
     _correctPosition(position) {
         const boundingBox = new THREE.Box3().setFromObject(this._board);
@@ -21,6 +24,18 @@ export const Board = {
             const {x, y, z} = this._boardTiles[0].position;
             position.set(x, position.y, z);
         }
+    },
+    _sameAsPreviousPosition(position) {
+        if (!this._previousPosition) {
+            return false;
+        }
+        return this._previousPosition.equals(position);
+    },
+    _setAsPreviousPosition(position) {
+        if (!this._previousPosition) {
+            this._previousPosition = new THREE.Vector3();
+        }
+        this._previousPosition.copy(position);
     }
 };
 
@@ -30,6 +45,7 @@ export function makeBoard(x = 0, y = 0, z = 0) {
 
     Object.setPrototypeOf(Board, board);
     return Object.setPrototypeOf({
+        _previousPosition: null,
         _board: board,
         _boardTiles: [],
         _tileFlipper: tileFlipper

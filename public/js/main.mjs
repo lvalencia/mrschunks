@@ -68,7 +68,7 @@ hero.addOnMoveListener(board);
 tiles.forEach((tile, index) => {
     if (index % 3 === 0) {
         tile.flip();
-        tile.__hasBeenFlippedAtLeastOnce = false; // dont affect internal state
+        tile._hasBeenFlippedAtLeastOnce = false; // dont affect internal state
     }
 });
 
