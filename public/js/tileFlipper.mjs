@@ -47,6 +47,12 @@ export const TileFlipper = {
     }
 };
 
+export function makeTileFlipper(flipBehavior) {
+    return Object.setPrototypeOf({
+        _behavior: flipBehavior
+    }, TileFlipper);
+}
+
 export default Object.setPrototypeOf({
     _behavior: FlipBehavior.Current
 }, TileFlipper);

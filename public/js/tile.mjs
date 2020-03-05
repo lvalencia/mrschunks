@@ -17,7 +17,7 @@ const defaultRotation = degToRad(90);
  *  Would actually make an object that presents an abstraction for a tile interface with commands like
  *  flip, bounce, shake, etc
 */
-export function makeTile(x = 0, y = 0, z = 0, tileRotation = defaultRotation) {
+export function makeTile(x = 0, y = 0, z = 0, flipped = false, tileRotation = defaultRotation) {
     const unit = 1;
     const planeBufferGeometry = new THREE.PlaneBufferGeometry(unit, unit, unit, unit);
 
@@ -58,6 +58,13 @@ export function makeTile(x = 0, y = 0, z = 0, tileRotation = defaultRotation) {
     };
     Object.setPrototypeOf(TileInterface, tilePivot);
 
-    return Object.create(TileInterface);
+    const tile = Object.create(TileInterface);
+
+    if (flipped) {
+        tile.flip();
+        tile._hasBeenFlippedAtLeastOnce = false;
+    }
+
+    return tile;
 }
 

@@ -1,11 +1,9 @@
 import {THREE} from './dependencies/three.mjs';
 import {OrbitControls} from './dependencies/OrbitControls.js';
 import Stats from './dependencies/stats.mjs';
-import {makeTile} from "./tile.mjs";
-import {makeHero} from "./hero.js";
 import {attachControls} from "./heroControls.mjs";
-import board from "./board.mjs";
 import guiControlsHelper from "./helpers/guiControlsHelper.mjs";
+import levelLoader from "./level.js";
 
 const canvas = document.getElementById('scene');
 const context = canvas.getContext('webgl2');
@@ -50,26 +48,13 @@ function adjustView({canvas, renderer, camera}) {
     }
 }
 
-scene.add(board);
-const tiles = [];
-for (let x = -5; x <= 5; x++) {
-    for (let z = -5; z <= 5; z++) {
-        const tile = makeTile(x, 0, z);
-        tiles.push(tile);
-        board.addTile(tile);
-    }
-}
-
-const hero = makeHero(-5, 0.1, 5);
-scene.add(hero);
-attachControls(hero);
-hero.addOnMoveListener(board);
-// Flip some Tiles
-tiles.forEach((tile, index) => {
-    if (index % 3 === 0) {
-        tile.flip();
-        tile._hasBeenFlippedAtLeastOnce = false; // dont affect internal state
-    }
+levelLoader.loadNextLevel().then(({board, tiles, hero}) => {
+    scene.add(board);
+    scene.add(hero);
+    attachControls(hero);
+    hero.addOnMoveListener(board);
+    guiControlsHelper.addTiles(tiles);
+    guiControlsHelper.addTileFlipBehavior(board._tileFlipper);
 });
 
 const controls = new OrbitControls(camera, canvas);
@@ -79,9 +64,6 @@ controls.update();
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(-1, 2, 4);
 scene.add(light);
-
-guiControlsHelper.addTiles(tiles);
-guiControlsHelper.addTileFlipBehavior(board._tileFlipper);
 
 let lastTick = 0;
 

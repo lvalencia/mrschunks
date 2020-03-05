@@ -1,5 +1,5 @@
 import {THREE} from "./dependencies/three.mjs";
-import tileFlipper from "./tileFlipper.mjs";
+import defaultTileFlipper, {makeTileFlipper} from "./tileFlipper.mjs";
 
 export const Board = {
     addTile(tile) {
@@ -39,7 +39,7 @@ export const Board = {
     }
 };
 
-export function makeBoard(x = 0, y = 0, z = 0) {
+export function makeBoard(tileFlipper = defaultTileFlipper, x = 0, y = 0, z = 0) {
     const board = new THREE.Object3D();
     board.position.set(x, y, z);
 
@@ -48,7 +48,7 @@ export function makeBoard(x = 0, y = 0, z = 0) {
         _previousPosition: null,
         _board: board,
         _boardTiles: [],
-        _tileFlipper: tileFlipper
+        _tileFlipper: makeTileFlipper(tileFlipper)
     }, Board);
 }
 
