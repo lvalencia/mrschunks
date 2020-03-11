@@ -34,9 +34,9 @@ export function makeTile(x = 0, y = 0, z = 0, flipped = false, tileRotation = de
     const tileUp = new THREE.Mesh(planeBufferGeometry, topPlaneMaterial);
     const tileDown = new THREE.Mesh(planeBufferGeometry, bottomPlaneMaterial);
     tilePivot.add(tileUp);
-    tileUp.position.set(0, 0, 0.1);
+    tileUp.position.set(0, 0, 0.01);
     tilePivot.add(tileDown);
-    tileDown.position.set(0, 0, -0.1);
+    tileDown.position.set(0, 0, -0.01);
 
     tilePivot.position.set(x, y, z);
     tilePivot.rotation.x = tileRotation;
@@ -44,7 +44,12 @@ export function makeTile(x = 0, y = 0, z = 0, flipped = false, tileRotation = de
     const TileInterface = {
         flip() {
             tilePivot.rotation.x = degToRad((radToDeg(tilePivot.rotation.x) + 180) % 360);
+            this._updateTileState();
             this._hasBeenFlippedAtLeastOnce = true;
+        },
+        _updateTileState() {
+            // right now just a boolean state
+            this.tileState = !this.tileState;
         },
         get previouslyFlipped() {
            return this._hasBeenFlippedAtLeastOnce;

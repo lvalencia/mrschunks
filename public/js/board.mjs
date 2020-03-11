@@ -12,6 +12,26 @@ export const Board = {
             this._tileFlipper.flip(this._boardTiles, position);
         }
         this._setAsPreviousPosition(position);
+        this._checkBoardClearedCondition();
+    },
+    addOnClearedListener(listener) {
+        this._listeners.push(listener);
+    },
+    _checkBoardClearedCondition() {
+        // Right now Winning Condition is they're all in the same state
+        const allFlipped = this._boardTiles.every((tile) => {
+            return (!!tile.tileState) === (!!this._boardTiles[0].tileState);
+        });
+
+        if (allFlipped) {
+            this._listeners.forEach(listener => {
+                if (typeof listener.onCleared === 'function') {
+                    listener.onCleared();
+                }
+            });
+        }
+
+        return allFlipped;
     },
     _correctPosition(position) {
         const boundingBox = new THREE.Box3().setFromObject(this._board);
@@ -48,7 +68,8 @@ export function makeBoard(tileFlipper = defaultTileFlipper, x = 0, y = 0, z = 0)
         _previousPosition: null,
         _board: board,
         _boardTiles: [],
-        _tileFlipper: makeTileFlipper(tileFlipper)
+        _tileFlipper: makeTileFlipper(tileFlipper),
+        _listeners: [],
     }, Board);
 }
 

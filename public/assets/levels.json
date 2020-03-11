@@ -38,7 +38,54 @@
     "hero": {
       "position": {
         "x": -1,
-        "y": 0.1,
+        "y": 0.01,
+        "z": 0
+      }
+    },
+    "board": {
+      "flipBehavior": 2
+    }
+  },
+  {
+    "name": "level 2",
+    "tiles": [
+      {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      }
+    ],
+    "hero": {
+      "position": {
+        "x": -1,
+        "y": 0.01,
         "z": 0
       }
     },

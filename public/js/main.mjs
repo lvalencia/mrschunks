@@ -1,9 +1,8 @@
 import {THREE} from './dependencies/three.mjs';
 import {OrbitControls} from './dependencies/OrbitControls.js';
 import Stats from './dependencies/stats.mjs';
-import {attachControls} from "./heroControls.mjs";
 import guiControlsHelper from "./helpers/guiControlsHelper.mjs";
-import levelLoader from "./level.js";
+import levelLoader, {LevelClearedListener} from "./level.js";
 
 const canvas = document.getElementById('scene');
 const context = canvas.getContext('webgl2');
@@ -47,15 +46,13 @@ function adjustView({canvas, renderer, camera}) {
         renderer.setSize(width, height, false);
     }
 }
+const levelClearedListener = Object.assign({
+    scene,
+    guiControlsHelper,
+    levelLoader
+}, LevelClearedListener);
 
-levelLoader.loadNextLevel().then(({board, tiles, hero}) => {
-    scene.add(board);
-    scene.add(hero);
-    attachControls(hero);
-    hero.addOnMoveListener(board);
-    guiControlsHelper.addTiles(tiles);
-    guiControlsHelper.addTileFlipBehavior(board._tileFlipper);
-});
+levelClearedListener.onCleared();
 
 const controls = new OrbitControls(camera, canvas);
 controls.target.set(0, 0, 0);
