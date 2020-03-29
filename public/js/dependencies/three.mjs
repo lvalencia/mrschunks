@@ -11512,7 +11512,6 @@ Mesh.prototype = Object.assign(Object.create(Object3D.prototype), {
     },
 
     raycast: function (raycaster, intersects) {
-
         var geometry = this.geometry;
         var material = this.material;
         var matrixWorld = this.matrixWorld;
@@ -45939,7 +45938,6 @@ Object.assign(Raycaster.prototype, {
     },
 
     intersectObjects: function (objects, recursive, optionalTarget) {
-
         var intersects = optionalTarget || [];
 
         if (Array.isArray(objects) === false) {

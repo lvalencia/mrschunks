@@ -11,8 +11,6 @@ const KeyCodes = {
     F: 70, // Transpose Down
 };
 
-let listener;
-
 export function attachControls(hero) {
     /*
      * Logic -  We need to listen to keyUp and keyDown events and then listen to the keys we want to listen to with
@@ -70,15 +68,17 @@ export function attachControls(hero) {
     };
 
     // This is a bad back -- will break shit, fix soon
-    listener = Object.setPrototypeOf({
+    const  listener = Object.setPrototypeOf({
         hero
     }, InputLister);
 
     window.addEventListener('keydown', listener.onKeyDown.bind(listener), false);
     window.addEventListener('keyup', listener.onKeyUp.bind(listener), false);
+
+    return listener;
 }
 
-export function detachControls(hero) {
+export function detachControls(listener) {
     window.removeEventListener('keydown', listener.onKeyDown.bind(listener), false);
     window.removeEventListener('keyup', listener.onKeyUp.bind(listener), false);
 }

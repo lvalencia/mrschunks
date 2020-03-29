@@ -7,12 +7,23 @@ const Secondary = '#3BCEAC';
 const SecondaryVariant = '#0EAD69';
 const White = '#FFFAFA';
 
+const PrimaryText = '#FFF';
+const AccentText = '#1F2D3D';
+const PrimaryVariantText = '#FFF';
+const SecondaryText = '#FFF';
+const SecondaryVariantText = '#FFF';
+
 export const Color = {
     Primary,
     PrimaryVariant,
     Accent,
     Secondary,
     SecondaryVariant,
-    White
+    White,
+    PrimaryText,
+    AccentText,
+    PrimaryVariantText,
+    SecondaryText,
+    SecondaryVariantText,
 };
 

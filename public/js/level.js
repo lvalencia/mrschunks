@@ -78,14 +78,11 @@ export const LevelLoader = {
         });
 
         const {
-            position: {
-                x,
-                y,
-                z
-            }
+            position
         } = currentLevel.hero;
 
-        const hero = makeHero(x,y,z);
+        const hero = makeHero(position);
+        board.initialPosition(position);
 
         return {
             board,
@@ -116,8 +113,10 @@ export const LevelClearedListener = {
 
         // Teardown - really tearing down should be the responsibility of each object itself
         //  ALl this has potential for leaks btw, you should check we did a proper teardown
+        if (this.listener) {
+            detachControls(this.listener);
+        }
         if (this.hero) {
-            detachControls(this.hero);
             while (this.hero.listeners.pop()) {}
             this.scene.remove(this.hero);
         }
@@ -136,7 +135,7 @@ export const LevelClearedListener = {
             this.scene.add(board);
             board.addOnClearedListener(this);
             this.scene.add(hero);
-            attachControls(hero);
+            this.listener = attachControls(hero);
             hero.addOnMoveListener(board);
             this.guiControlsHelper.addTiles(tiles);
             this.guiControlsHelper.addTileFlipBehavior(board._tileFlipper);
