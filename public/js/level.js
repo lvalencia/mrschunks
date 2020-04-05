@@ -2,36 +2,7 @@ import {makeTile} from "./tile.mjs";
 import {makeBoard} from "./board.mjs";
 import {makeHero} from "./hero.js";
 import {attachControls, detachControls} from "./heroControls.mjs";
-import guiControlsHelper from "./helpers/guiControlsHelper.mjs";
-
-const HOST = 'http://localhost:8080';
-
-const READY_STATE = {
-    DONE: 4
-};
-const HTTP_STATUS = {
-    OK: 200
-};
-const REQUEST_METHOD = {
-    GET: "GET"
-};
-const RESPONSE_TYPE = {
-    JSON: "json"
-};
-
-// basic file loader
-function readFile(url, request = new XMLHttpRequest()) {
-    return new Promise((resolve) => {
-        request.onreadystatechange = function readyStateChanged() {
-            if (this.readyState === READY_STATE.DONE && this.status === HTTP_STATUS.OK) {
-                resolve(request.response);
-            }
-        };
-        request.responseType = RESPONSE_TYPE.JSON;
-        request.open(REQUEST_METHOD.GET, `${HOST}${url}`);
-        request.send();
-    });
-}
+import {readFile} from "./utils/fileReader.mjs";
 
 // Basic Level Loader
 export const LevelLoader = {
@@ -147,7 +118,7 @@ export const LevelClearedListener = {
 
 export default Object.setPrototypeOf({
     // levels are a json file for now
-    _levelsFile: '/assets/levels.json',
+    _levelsFile: '/json/levels.json',
     _fileLoader: readFile
 }, LevelLoader);
 

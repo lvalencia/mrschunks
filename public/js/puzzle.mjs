@@ -4,7 +4,7 @@ import guiControlsHelper from "./helpers/guiControlsHelper.mjs";
 import levelLoader, {LevelClearedListener} from "./level.js";
 
 const Puzzle = {
-    init(args) {
+    init() {
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0xf0ead6);
         const cameraFOV = 75;
@@ -23,11 +23,7 @@ const Puzzle = {
         this.scene = scene;
         this.camera = camera;
     },
-    load(args) {
-        const {
-            canvas
-        } = args;
-
+    load() {
         const light = new THREE.DirectionalLight(0xffffff, 1);
         light.position.set(-1, 2, 4);
         this.scene.add(light);
@@ -40,7 +36,7 @@ const Puzzle = {
 
         levelClearedListener.onCleared();
 
-        const controls = new OrbitControls(this.camera, canvas);
+        const controls = new OrbitControls(this.camera, this.canvas);
         controls.target.set(0, 0, 0);
         controls.update();
     },

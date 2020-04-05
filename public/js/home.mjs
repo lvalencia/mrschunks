@@ -11,11 +11,7 @@ const Home = {
     Transition: {
         Game: 'GAME'
     },
-    init(args) {
-        const {
-            canvas
-        } = args;
-
+    init() {
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(Color.Accent);
         const cameraFOV = 75;
@@ -39,7 +35,6 @@ const Home = {
 
         this.scene = scene;
         this.camera = camera;
-        this.canvas = canvas;
     },
     load() {
         this.listener = attachControls(this.camera, this.canvas);

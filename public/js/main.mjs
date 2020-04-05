@@ -3,7 +3,7 @@ import Stats from "./dependencies/stats.mjs";
 import Home from "./home.mjs";
 import Puzzle from "./puzzle.mjs";
 import {ObjectMediatorGraph} from "./objectMediatorGraph.mjs";
-import {BlendSceneTransition} from "./blendSceneTransition.mjs";
+import {BlendSceneTransition, BlendTransitions} from "./blendSceneTransition.mjs";
 
 const canvas = document.getElementById('scene');
 const context = canvas.getContext('webgl2');
@@ -32,19 +32,34 @@ function adjustView({canvas, renderer, camera}) {
     }
 }
 
+const home = Object.setPrototypeOf({
+    canvas
+}, Home);
+
+const puzzle = Object.setPrototypeOf({
+    canvas,
+}, Puzzle);
+
 // State Graph
 const actionTransitionGraph = Object.setPrototypeOf({
     adjacencyCollection: new Map()
 }, ObjectMediatorGraph);
 
-actionTransitionGraph.addObject(Home);
-actionTransitionGraph.addObject(Puzzle);
-actionTransitionGraph.addMediator(Home, Puzzle, BlendSceneTransition, Home.Transition.Game);
+actionTransitionGraph.addObject(home);
+actionTransitionGraph.addObject(puzzle);
 
-Home.init({canvas});
-Home.load();
+const blendTransition = Object.setPrototypeOf({
+    transition: BlendTransitions.Cells,
+    canvas,
+    renderer
+}, BlendSceneTransition);
 
-let current = Home;
+actionTransitionGraph.addMediator(home, puzzle, blendTransition, Home.Transition.Game);
+
+home.init();
+home.load();
+
+let current = home;
 
 function animate(time) {
     if (current.transitionTo) {
@@ -52,7 +67,7 @@ function animate(time) {
         for (const [toAction, {mediator, label}] of transitions) {
             if (label === current.transitionTo) {
                 mediator.init(current, toAction);
-                mediator.load({canvas});
+                mediator.load();
                 current = mediator;
                 break;
             }
