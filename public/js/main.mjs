@@ -1,27 +1,12 @@
-import {THREE} from './dependencies/three.mjs';
-import {OrbitControls} from './dependencies/OrbitControls.js';
-import Stats from './dependencies/stats.mjs';
-import guiControlsHelper from "./helpers/guiControlsHelper.mjs";
-import levelLoader, {LevelClearedListener} from "./level.js";
+import {THREE} from "./dependencies/three.mjs";
+import Stats from "./dependencies/stats.mjs";
+import Home from "./home.mjs";
+import Puzzle from "./puzzle.mjs";
+import {ObjectMediatorGraph} from "./objectMediatorGraph.mjs";
+import {BlendSceneTransition} from "./blendSceneTransition.mjs";
 
 const canvas = document.getElementById('scene');
 const context = canvas.getContext('webgl2');
-
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xf0ead6);
-const cameraFOV = 75;
-const cameraAspect = window.innerWidth / window.innerHeight;
-const cameraNearClipping = 0.1;
-const cameraFarClipping = 100;
-const camera = new THREE.PerspectiveCamera(
-    cameraFOV,
-    cameraAspect,
-    cameraNearClipping,
-    cameraFarClipping
-);
-camera.position.set(5, 5, 10);
-camera.lookAt(0, 0, 0);
-
 const renderer = new THREE.WebGLRenderer({context, canvas});
 renderer.setSize(window.innerWidth, window.innerHeight, false);
 
@@ -46,34 +31,43 @@ function adjustView({canvas, renderer, camera}) {
         renderer.setSize(width, height, false);
     }
 }
-const levelClearedListener = Object.assign({
-    scene,
-    guiControlsHelper,
-    levelLoader
-}, LevelClearedListener);
 
-levelClearedListener.onCleared();
+// State Graph
+const actionTransitionGraph = Object.setPrototypeOf({
+    adjacencyCollection: new Map()
+}, ObjectMediatorGraph);
 
-const controls = new OrbitControls(camera, canvas);
-controls.target.set(0, 0, 0);
-controls.update();
+actionTransitionGraph.addObject(Home);
+actionTransitionGraph.addObject(Puzzle);
+actionTransitionGraph.addMediator(Home, Puzzle, BlendSceneTransition, Home.Transition.Game);
 
-const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(-1, 2, 4);
-scene.add(light);
+Home.init({canvas});
+Home.load();
 
-let lastTick = 0;
+let current = Home;
 
 function animate(time) {
-    time *= 0.001;
-
-    if (!lastTick || time - lastTick >= 1) {
-        lastTick = time;
-        // Do something once a second
+    if (current.transitionTo) {
+        const {value: transitions} = actionTransitionGraph.mediatedObjects(current);
+        for (const [toAction, {mediator, label}] of transitions) {
+            if (label === current.transitionTo) {
+                mediator.init(current, toAction);
+                mediator.load({canvas});
+                current = mediator;
+                break;
+            }
+        }
+    }
+    if (current.done) {
+        current.unload();
+        current = current.next();
     }
 
-    adjustView({canvas, renderer, camera});
+    current.update(time);
 
+    const {camera, scene} = current;
+
+    adjustView({canvas, renderer, camera});
     renderer.render(scene, camera);
 
     stats.update();
