@@ -21,7 +21,7 @@ const PuzzleAction = {
             cameraNearClipping,
             cameraFarClipping
         );
-        camera.position.set(0, 10, 5);
+        camera.position.set(0, 7, 5);
         camera.lookAt(0, 0, 0);
 
         this.scene = scene;

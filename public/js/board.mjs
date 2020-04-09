@@ -42,8 +42,7 @@ export function createBoardInterfaceObject() {
             return allFlipped;
         },
         _correctPosition(position) {
-            const boundingBox = new THREE.Box3().setFromObject(this._board);
-            if (!boundingBox.containsPoint(position)) {
+            if (!this._isWithinBounds(position)) {
                 // Put Back in Bounds
                 this._boardTiles.sort(({position: tilePositionA}, {position: tilePositionB}) => {
                     // sort by closest tile to current position
@@ -52,6 +51,15 @@ export function createBoardInterfaceObject() {
                 const {x, y, z} = this._boardTiles[0].position;
                 position.set(x, position.y, z);
             }
+        },
+        _isWithinBounds(position) {
+            for (const tile of this._boardTiles) {
+                const boundingBox = new THREE.Box3().setFromObject(tile);
+                if (boundingBox.containsPoint(position)){
+                    return true;
+                }
+            }
+            return false;
         },
         _sameAsPreviousPosition(position) {
             if (!this._previousPosition) {
