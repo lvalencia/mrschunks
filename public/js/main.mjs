@@ -1,7 +1,7 @@
 import {THREE} from "./dependencies/three.mjs";
 import Stats from "./dependencies/stats.mjs";
-import Home from "./home.mjs";
-import Puzzle from "./puzzle.mjs";
+import HomeAction from "./homeAction.mjs";
+import PuzzleAction from "./puzzleAction.mjs";
 import {ObjectMediatorGraph} from "./objectMediatorGraph.mjs";
 import {BlendSceneTransition, BlendTransitions} from "./blendSceneTransition.mjs";
 
@@ -34,11 +34,11 @@ function adjustView({canvas, renderer, camera}) {
 
 const home = Object.setPrototypeOf({
     canvas
-}, Home);
+}, HomeAction);
 
 const puzzle = Object.setPrototypeOf({
     canvas,
-}, Puzzle);
+}, PuzzleAction);
 
 // State Graph
 const actionTransitionGraph = Object.setPrototypeOf({
@@ -54,7 +54,7 @@ const blendTransition = Object.setPrototypeOf({
     renderer
 }, BlendSceneTransition);
 
-actionTransitionGraph.addMediator(home, puzzle, blendTransition, Home.Transition.Game);
+actionTransitionGraph.addMediator(home, puzzle, blendTransition, HomeAction.Transition.Game);
 
 home.init();
 home.load();

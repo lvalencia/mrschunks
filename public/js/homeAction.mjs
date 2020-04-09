@@ -7,7 +7,7 @@ import {makeHero} from "./hero.js";
 import {attachControls, detachControls} from "./menuControls.mjs";
 import {PickHelper} from "./helpers/pickHelper.mjs";
 
-const Home = {
+const HomeAction = {
     Transition: {
         Game: 'GAME'
     },
@@ -79,7 +79,7 @@ const Home = {
                 this.restoreOriginalColor();
             };
             action.onClick = (function onTextActionClick() {
-                this.setTransitionTo(Home.Transition.Game);
+                this.setTransitionTo(HomeAction.Transition.Game);
             }).bind(this);
             action.onAnimate = function onTextActionAnimate(time) {
                 const speed = time;
@@ -130,4 +130,4 @@ const Home = {
     }
 };
 
-export default Home;
+export default HomeAction;

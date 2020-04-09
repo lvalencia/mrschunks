@@ -10,6 +10,10 @@ export function createHeroInterfaceObject() {
         addOnMoveListener(listener) {
             this.listeners.push(listener);
         },
+        removeOnMoveListeners() {
+            while (this.listeners.pop()) {
+            }
+        },
         _notifyListeners() {
             this.listeners.forEach(listener => {
                 if (typeof listener.onMove === 'function') {
@@ -56,9 +60,11 @@ export function createHeroInterfaceObject() {
     };
     return Hero;
 }
+
 const defaultX = 0;
 const defaultY = 0;
 const defaultZ = 0;
+
 export function makeHero(options = {x: defaultX, y: defaultY, z: defaultZ}) {
     const {
         x,

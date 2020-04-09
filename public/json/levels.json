@@ -3,69 +3,48 @@
     "name": "level 1",
     "tiles": [
       {
+        "type": "NORMAL",
         "position": {
           "x": 0,
-          "y": 0,
-          "z": 0
-        },
-        "flipped": true
-      },
-      {
-        "position": {
-          "x": 0,
-          "y": 0,
-          "z": -1
-        },
-        "flipped": true
-      },
-      {
-        "position": {
-          "x": -1,
-          "y": 0,
-          "z": -1
-        },
-        "flipped": true
-      },
-      {
-        "position": {
-          "x": -1,
           "y": 0,
           "z": 0
         },
         "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
       }
     ],
     "hero": {
       "position": {
-        "x": -1,
+        "x": 0,
         "y": 0.01,
         "z": 0
-      }
+      },
+      "effect": "NONE"
     },
     "board": {
       "flipBehavior": 2
+    },
+    "camera": {
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
     }
   },
   {
     "name": "level 2",
     "tiles": [
       {
-        "position": {
-          "x": 0,
-          "y": 0,
-          "z": 0
-        },
-        "flipped": false
-      },
-      {
-        "position": {
-          "x": 0,
-          "y": 0,
-          "z": -1
-        },
-        "flipped": false
-      },
-      {
+        "type": "NORMAL",
         "position": {
           "x": -1,
           "y": 0,
@@ -74,6 +53,25 @@
         "flipped": false
       },
       {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
         "position": {
           "x": -1,
           "y": 0,
@@ -84,10 +82,851 @@
     ],
     "hero": {
       "position": {
+        "x": 0,
+        "y": 0.01,
+        "z": 0
+      },
+      "effect": "NONE"
+    },
+    "board": {
+      "flipBehavior": 2
+    }
+  },
+  {
+    "name": "level 3",
+    "tiles": [
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      }
+    ],
+    "hero": {
+      "position": {
+        "x": 0,
+        "y": 0.01,
+        "z": 0
+      },
+      "effect": "NONE"
+    },
+    "board": {
+      "flipBehavior": 2
+    },
+    "camera": {
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  },
+  {
+    "name": "level 4",
+    "tiles": [
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": false
+      }
+    ],
+    "hero": {
+      "position": {
+        "x": 1,
+        "y": 0.01,
+        "z": -1
+      },
+      "effect": "NONE"
+    },
+    "board": {
+      "flipBehavior": 2
+    },
+    "camera": {
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  },
+  {
+    "name": "level 5",
+    "tiles": [
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": false
+      }
+    ],
+    "hero": {
+      "position": {
+        "x": 1,
+        "y": 0.01,
+        "z": 1
+      },
+      "effect": "NONE"
+    },
+    "board": {
+      "flipBehavior": 2
+    },
+    "camera": {
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  },
+  {
+    "name": "level 6",
+    "tiles": [
+      {
+        "type": "FLIPPER",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -2
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": false
+      }
+    ],
+    "hero": {
+      "position": {
+        "x": 0,
+        "y": 0.01,
+        "z": 1
+      },
+      "effect": "NONE"
+    },
+    "board": {
+      "flipBehavior": 2
+    },
+    "camera": {
+      "position": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  },
+  {
+    "name": "level 7",
+    "tiles": [
+      {
+        "type": "FLIPPER",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "FLIPPER",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      }
+    ],
+    "hero": {
+      "position": {
+        "x": 0,
+        "y": 0.01,
+        "z": 0
+      },
+      "effect": "NONE"
+    },
+    "board": {
+      "flipBehavior": 2
+    }
+  },
+  {
+    "name": "level 8",
+    "tiles": [
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -2
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -2,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 2
+        },
+        "flipped": false
+      }
+    ],
+    "hero": {
+      "position": {
+        "x": 0,
+        "y": 0.01,
+        "z": -2
+      },
+      "effect": "NONE"
+    },
+    "board": {
+      "flipBehavior": 3
+    }
+  },
+  {
+    "name": "level 9",
+    "tiles": [
+      {
+        "type": "ADJACENT",
+        "position": {
+          "x": -2,
+          "y": 0,
+          "z": -2
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -2
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -2
+        },
+        "flipped":true
+      },
+      {
+        "type": "ADJACENT",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": -2
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -2,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -2,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "ADJACENT",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -2,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": false
+      }
+    ],
+    "hero": {
+      "position": {
+        "x": 0,
+        "y": 0.01,
+        "z": 0
+      },
+      "effect": "NONE"
+    },
+    "board": {
+      "flipBehavior": 2
+    }
+  },
+  {
+    "name": "level 10",
+    "tiles": [
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -2
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -2,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": true
+      },
+      {
+        "type": "ADJACENT",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped":true
+      },
+      {
+        "type": "FLIPPER",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": -1
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": -1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "ADJACENT",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 2,
+          "y": 0,
+          "z": 1
+        },
+        "flipped": true
+      },
+      {
+        "type": "NORMAL",
+        "position": {
+          "x": 1,
+          "y": 0,
+          "z": 2
+        },
+        "flipped": true
+      }
+    ],
+    "hero": {
+      "position": {
         "x": -1,
         "y": 0.01,
         "z": 0
-      }
+      },
+      "effect": "NONE"
     },
     "board": {
       "flipBehavior": 2

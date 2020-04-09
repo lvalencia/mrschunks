@@ -18,6 +18,10 @@ export function createBoardInterfaceObject() {
         addOnClearedListener(listener) {
             this._listeners.push(listener);
         },
+        removeOnClearedListeners() {
+            while (this._listeners.pop()) {
+            }
+        },
         initialPosition(position) {
             this._setAsPreviousPosition(position);
         },

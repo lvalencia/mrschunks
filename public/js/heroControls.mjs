@@ -11,26 +11,16 @@ const KeyCodes = {
     F: 70, // Transpose Down
 };
 
-export function attachControls(hero) {
-    /*
-     * Logic -  We need to listen to keyUp and keyDown events and then listen to the keys we want to listen to with
-     * respective key codes
-     *
-     * so basically listen for w a s d and up down left right
-     * when we get an event we indicate that we're expecting to move, and we send the move to the hero as long as we
-     * are keyed down, and when we are key up we stop sending the move to the hero
-     *
-     * and the hero object decides how to deal with that input e.g. it can ignore until it's finishes it's current transition etc
-     *
-     * another alternative is we send the commands to the board and shift the board, but that might look and feel weird
-     */
-
+function createInputListenerInterface() {
     const InputLister = {
         onKeyDown(event) {
             this._setMovement(event, true);
         },
         onKeyUp(event) {
             this._setMovement(event, false);
+        },
+        setHero(hero) {
+            this.hero = hero;
         },
         /*
          * The Idea behind passing should move would be if we wanted to have like a stop animation
@@ -66,19 +56,26 @@ export function attachControls(hero) {
             }
         }
     };
+    return InputLister;
+}
 
-    // This is a bad back -- will break shit, fix soon
-    const  listener = Object.setPrototypeOf({
-        hero
-    }, InputLister);
+export function attachControls(hero = undefined) {
+    const listener = Object.setPrototypeOf({
+        hero,
+    }, createInputListenerInterface());
 
-    window.addEventListener('keydown', listener.onKeyDown.bind(listener), false);
-    window.addEventListener('keyup', listener.onKeyUp.bind(listener), false);
+    listener._boundOnKeyDown = listener.onKeyDown.bind(listener);
+    listener._boundOnKeyUp = listener.onKeyUp.bind(listener);
+
+    window.addEventListener('keydown', listener._boundOnKeyDown);
+    window.addEventListener('keyup', listener._boundOnKeyUp);
 
     return listener;
 }
 
 export function detachControls(listener) {
-    window.removeEventListener('keydown', listener.onKeyDown.bind(listener), false);
-    window.removeEventListener('keyup', listener.onKeyUp.bind(listener), false);
+    window.removeEventListener('keydown', listener._boundOnKeyDown);
+    window.removeEventListener('keyup', listener._boundOnKeyUp);
+
+    listener.hero = undefined;
 }
