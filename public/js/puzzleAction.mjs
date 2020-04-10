@@ -107,6 +107,22 @@ const PuzzleAction = {
         }
 
         this.shouldBuildNextLevel = true;
+    },
+    onFailed() {
+        this.currentHero.removeOnMoveListeners();
+        this.currentBoard.removeOnClearedListeners();
+
+        this.scene.remove(this.currentHero);
+        this.scene.remove(this.currentBoard);
+
+        // Debug Behavior should be moved into debug objects that no-op if we're not doing debug stuff
+        if (DEBUG) {
+            guiControlsHelper.removeTiles();
+            guiControlsHelper.removeTileFlipBehavior();
+        }
+
+        this.currentLevel -= 1; // Redo Level
+        this.shouldBuildNextLevel = true;
     }
 };
 

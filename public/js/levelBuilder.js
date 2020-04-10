@@ -1,6 +1,7 @@
 import {makeTile} from "./tile.mjs";
 import {makeBoard} from "./board.mjs";
 import {makeHero} from "./hero.js";
+import conditionBuilder from "./conditionBuilder.mjs";
 
 export const LevelBuilder = {
     canBuild(level) {
@@ -10,9 +11,18 @@ export const LevelBuilder = {
         const currentLevel = this.levels[level];
 
         const {
-            flipBehavior
+            conditions: stateConditions,
+            flipBehavior,
         } = currentLevel.board;
-        const board = makeBoard(flipBehavior);
+
+        const conditions = Object.entries(stateConditions).map(([state, conditions]) => {
+            return conditionBuilder.build(state, conditions);
+        });
+
+        const board = makeBoard({
+            tileFlipBehavior: flipBehavior,
+            boardConditions: conditions
+        });
         const tiles = [];
         currentLevel.tiles.forEach((tile) => {
             const {

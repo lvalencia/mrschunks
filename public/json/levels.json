@@ -30,7 +30,12 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 2
+      "flipBehavior": 2,
+      "conditions": {
+        "WON": {
+          "ALL_TILES": "SAME"
+        }
+      }
     },
     "camera": {
       "position": {
@@ -89,7 +94,12 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 2
+      "flipBehavior": 2,
+      "conditions": {
+        "WON": {
+          "ALL_TILES": "SAME"
+        }
+      }
     }
   },
   {
@@ -186,7 +196,12 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 2
+      "flipBehavior": 2,
+      "conditions": {
+        "WON": {
+          "ALL_TILES": "FLIPPED"
+        }
+      }
     },
     "camera": {
       "position": {
@@ -290,7 +305,19 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 2
+      "flipBehavior": 2,
+      "conditions": {
+        "WON_BONUS": {
+          "ALL_TILES": "FLIPPED",
+          "MAX_MOVES": 8
+        },
+        "WON": {
+          "ALL_TILES": "FLIPPED"
+        },
+        "LOST": {
+          "MAX_MOVES": 12
+        }
+      }
     },
     "camera": {
       "position": {
@@ -394,7 +421,15 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 2
+      "flipBehavior": 2,
+      "conditions": {
+        "WON": {
+          "ALL_TILES": "FLIPPED"
+        },
+        "LOST": {
+          "MAX_MOVES": 3
+        }
+      }
     },
     "camera": {
       "position": {
@@ -453,7 +488,12 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 2
+      "flipBehavior": 2,
+      "conditions": {
+        "WON": {
+          "ALL_TILES": "NOT_FLIPPED"
+        }
+      }
     },
     "camera": {
       "position": {
@@ -512,7 +552,15 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 2
+      "flipBehavior": 2,
+      "conditions": {
+        "WON": {
+          "ALL_TILES": "NOT_FLIPPED"
+        },
+        "LOST": {
+          "MAX_MOVES": 5
+        }
+      }
     }
   },
   {
@@ -645,7 +693,19 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 3
+      "flipBehavior": 3,
+      "conditions": {
+        "WON_BONUS": {
+          "ALL_TILES": "NOT_FLIPPED",
+          "MAX_MOVES": 6
+        },
+        "WON": {
+          "ALL_TILES": "NOT_FLIPPED"
+        },
+        "LOST": {
+          "MAX_MOVES": 12
+        }
+      }
     }
   },
   {
@@ -676,7 +736,7 @@
           "y": 0,
           "z": -2
         },
-        "flipped":true
+        "flipped": true
       },
       {
         "type": "ADJACENT",
@@ -805,7 +865,15 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 2
+      "flipBehavior": 2,
+      "conditions": {
+        "WON": {
+          "ALL_TILES": "FLIPPED"
+        },
+        "LOST": {
+          "MAX_MOVES": 16
+        }
+      }
     }
   },
   {
@@ -836,7 +904,7 @@
           "y": 0,
           "z": -1
         },
-        "flipped":true
+        "flipped": true
       },
       {
         "type": "FLIPPER",
@@ -929,7 +997,15 @@
       "effect": "NONE"
     },
     "board": {
-      "flipBehavior": 2
+      "flipBehavior": 2,
+      "conditions": {
+        "WON": {
+          "ALL_TILES": "NOT_FLIPPED"
+        },
+        "LOST": {
+          "MAX_MOVES": 7
+        }
+      }
     }
   }
 ]
