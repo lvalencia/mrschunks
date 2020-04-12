@@ -60,11 +60,11 @@ const PuzzleAction = {
             } = this.levelBuilder.build(this.currentLevel);
 
             this.scene.add(board);
-            board.addOnClearedListener(this);
+            board.addBoardEventsDelegate(this);
 
             this.listener.setHero(hero);
             this.scene.add(hero);
-            hero.addOnMoveListener(board);
+            hero.addHeroEventsDelegate(board);
 
             this.currentBoard = board;
             this.currentHero = hero;
@@ -94,8 +94,8 @@ const PuzzleAction = {
          * Prompt for next level or do a transition to next level
          * when there aren't any more indicate that it's finished
          */
-        this.currentHero.removeOnMoveListeners();
-        this.currentBoard.removeOnClearedListeners();
+        this.currentHero.removeHeroEventsDelegates();
+        this.currentBoard.removeBoardEventsDelegates();
 
         this.scene.remove(this.currentHero);
         this.scene.remove(this.currentBoard);
@@ -109,8 +109,8 @@ const PuzzleAction = {
         this.shouldBuildNextLevel = true;
     },
     onFailed() {
-        this.currentHero.removeOnMoveListeners();
-        this.currentBoard.removeOnClearedListeners();
+        this.currentHero.removeHeroEventsDelegates();
+        this.currentBoard.removeBoardEventsDelegates();
 
         this.scene.remove(this.currentHero);
         this.scene.remove(this.currentBoard);

@@ -2,6 +2,11 @@ import {THREE} from "./dependencies/three.mjs";
 import {FlipBehavior, makeTileFlipper} from "./tileFlipper.mjs";
 import {PuzzleState} from "./conditionBuilder.mjs";
 
+export const BoardEffects = {
+    None: 'NONE',
+    FlipAll: 'FLIP_ALL'
+};
+
 export function createBoardInterfaceObject() {
     const Board = {
         addTile(tile) {
@@ -17,18 +22,21 @@ export function createBoardInterfaceObject() {
             this._setAsPreviousPosition(position);
             this._checkBoardConditions();
         },
+        onEffect(effect) {
+            // use switch for now
+            switch(effect) {
+                case BoardEffects.FlipAll:
+                    this._boardTiles.forEach((tile) => {
+                        this._tileFlipper.flip(this._boardTiles, tile.position);
+                    });
+                    break;
+            }
+        },
         // This could be improved with a tag
         addBoardEventsDelegate(listener) {
             this._listeners.push(listener);
         },
         removeBoardEventsDelegates() {
-            while (this._listeners.pop()) {
-            }
-        },
-        addOnClearedListener(listener) {
-            this._listeners.push(listener);
-        },
-        removeOnClearedListeners() {
             while (this._listeners.pop()) {
             }
         },
@@ -104,17 +112,17 @@ export function createBoardInterfaceObject() {
     return Board;
 }
 
-const defaultArgs = {
-    tileFlipBehavior: FlipBehavior.Current,
-    position: {
-        x: 0,
-        y: 0,
-        z: 0
-    },
-    boardConditions: []
-};
+export function makeBoard(args = {}) {
+    const defaultArgs = {
+        tileFlipBehavior: FlipBehavior.Current,
+        position: {
+            x: 0,
+            y: 0,
+            z: 0
+        },
+        boardConditions: []
+    };
 
-export function makeBoard(args = defaultArgs) {
     args = Object.assign(defaultArgs, args);
     let {
         tileFlipBehavior,

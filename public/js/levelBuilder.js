@@ -40,10 +40,11 @@ export const LevelBuilder = {
         });
 
         const {
-            position
+            position,
+            effect
         } = currentLevel.hero;
 
-        const hero = makeHero(position);
+        const hero = makeHero({effect, position});
         board.initialPosition(position);
 
         return {

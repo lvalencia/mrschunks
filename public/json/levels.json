@@ -418,7 +418,7 @@
         "y": 0.01,
         "z": 1
       },
-      "effect": "NONE"
+      "effect": "FLIP_ALL"
     },
     "board": {
       "flipBehavior": 2,

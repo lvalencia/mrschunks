@@ -9,6 +9,7 @@ const KeyCodes = {
     Right: 39,
     R: 82, // Transpose Up
     F: 70, // Transpose Down
+    Space: 32
 };
 
 function createInputListenerInterface() {
@@ -52,6 +53,9 @@ function createInputListenerInterface() {
                     break;
                 case KeyCodes.F:
                     this.hero.moveDown = shouldBeMoving;
+                    break;
+                case KeyCodes.Space:
+                    this.hero.useEffect();
                     break;
             }
         }
