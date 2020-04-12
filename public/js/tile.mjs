@@ -1,5 +1,6 @@
 import {THREE} from "./dependencies/three.mjs";
 import {Color} from "./color.mjs";
+import {BoardEffect} from "./board.mjs";
 
 const {
     MathUtils: {
@@ -8,16 +9,46 @@ const {
     }
 } = THREE;
 
-// Keep it stupid simple because you'll probably be swapping these out with Textures
-// lets make a 10x10 board of squares
-const defaultRotation = degToRad(90);
+export function createTileInterfaceObject() {
+    const TileInterface = {
+        flip() {
+            this.rotation.x = degToRad((radToDeg(this.rotation.x) + 180) % 360);
+            this._updateTileState();
+            this._hasBeenFlippedAtLeastOnce = true;
+        },
+        _updateTileState() {
+            // right now just a boolean state
+            this.tileState = !this.tileState;
+        },
+        get previouslyFlipped() {
+            return this._hasBeenFlippedAtLeastOnce;
+        }
+    };
+    return TileInterface;
+}
 
-/*
- * @TODO
- *  Would actually make an object that presents an abstraction for a tile interface with commands like
- *  flip, bounce, shake, etc
-*/
-export function makeTile(x = 0, y = 0, z = 0, flipped = false, tileRotation = defaultRotation) {
+export function makeTile(args = {}) {
+    const defaultArgs = {
+        position: {
+            x: 0,
+            y: 0,
+            z: 0
+        },
+        flipped: false,
+        tileRotation: degToRad(90),
+        effect: BoardEffect.None
+    };
+
+    args = Object.assign(defaultArgs, args);
+    let {
+        position: {
+            x, y, z
+        },
+        flipped,
+        tileRotation,
+        effect
+    } = args;
+
     const unit = 1;
     const planeBufferGeometry = new THREE.PlaneBufferGeometry(unit, unit, unit, unit);
 
@@ -41,35 +72,16 @@ export function makeTile(x = 0, y = 0, z = 0, flipped = false, tileRotation = de
     tilePivot.position.set(x, y, z);
     tilePivot.rotation.x = tileRotation;
 
-    const TileInterface = {
-        flip() {
-            tilePivot.rotation.x = degToRad((radToDeg(tilePivot.rotation.x) + 180) % 360);
-            this._updateTileState();
-            this._hasBeenFlippedAtLeastOnce = true;
-        },
-        _updateTileState() {
-            // right now just a boolean state
-            this.tileState = !this.tileState;
-        },
-        get previouslyFlipped() {
-           return this._hasBeenFlippedAtLeastOnce;
-        },
-        get topColor() {
-            return topPlaneMaterial.color;
-        },
-        get bottomColor() {
-            return bottomPlaneMaterial.color;
-        }
-    };
-    Object.setPrototypeOf(TileInterface, tilePivot);
-
-    const tile = Object.create(TileInterface);
+    const tileInterfaceObject = Object.setPrototypeOf(createTileInterfaceObject(), tilePivot);
 
     if (flipped) {
-        tile.flip();
-        tile._hasBeenFlippedAtLeastOnce = false;
+        tileInterfaceObject.flip();
+        tileInterfaceObject._hasBeenFlippedAtLeastOnce = false;
     }
 
-    return tile;
+    return Object.setPrototypeOf({
+        topColor: topPlaneMaterial.color,
+        bottomColor: bottomPlaneMaterial.color,
+        effect
+    }, tileInterfaceObject);
 }
-

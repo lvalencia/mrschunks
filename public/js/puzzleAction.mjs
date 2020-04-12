@@ -32,7 +32,7 @@ const PuzzleAction = {
         light.position.set(-1, 2, 4);
         this.scene.add(light);
 
-        this.currentLevel = 0;
+        this.currentLevel = 9;
         this.shouldBuildNextLevel = true;
         const levelsFile = '/json/levels.json';
         readFile(levelsFile).then((levels) => {

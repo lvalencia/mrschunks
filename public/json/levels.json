@@ -443,7 +443,7 @@
     "name": "level 6",
     "tiles": [
       {
-        "effect": 2,
+        "effect": 10,
         "position": {
           "x": 0,
           "y": 0,
@@ -507,7 +507,7 @@
     "name": "level 7",
     "tiles": [
       {
-        "effect": 2,
+        "effect": 4,
         "position": {
           "x": -1,
           "y": 0,
@@ -520,18 +520,18 @@
         "position": {
           "x": 0,
           "y": 0,
-          "z": 0
-        },
-        "flipped": false
-      },
-      {
-        "effect": 2,
-        "position": {
-          "x": 0,
-          "y": 0,
           "z": -1
         },
         "flipped": true
+      },
+      {
+        "effect": 4,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 0
+        },
+        "flipped": false
       },
       {
         "effect": 1,
@@ -860,7 +860,7 @@
       "position": {
         "x": 0,
         "y": 0.01,
-        "z": 0
+        "z": 1
       },
       "effect": 1
     },
@@ -907,7 +907,7 @@
         "flipped": true
       },
       {
-        "effect": 2,
+        "effect": 10,
         "position": {
           "x": 1,
           "y": 0,
@@ -1000,7 +1000,7 @@
       "flipBehavior": 2,
       "conditions": {
         "WON": {
-          "ALL_TILES": "NOT_FLIPPED"
+          "ALL_TILES": "FLIPPED"
         },
         "LOST": {
           "MAX_MOVES": 7

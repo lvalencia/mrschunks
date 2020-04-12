@@ -1,7 +1,7 @@
 import {THREE} from "./dependencies/three.mjs";
 import {Color} from "./color.mjs";
 import {uuidv4} from "./utils/mathUtils.js";
-import {BoardEffects} from "./board.mjs";
+import {BoardEffect} from "./board.mjs";
 
 const UNIT_OF_MOVEMENT = 1;
 
@@ -22,7 +22,7 @@ export function createHeroInterfaceObject() {
                     listener.onEffect(this.effect);
                 }
             });
-            this.effect = undefined;
+            this.effect = BoardEffect.None;
         },
         _notifyMove() {
             this.listeners.forEach(listener => {
@@ -78,7 +78,7 @@ export function makeHero(args = {}) {
             y: 0,
             z: 0
         },
-        effect: BoardEffects.None,
+        effect: BoardEffect.None,
         scale: 0.6
     };
 

@@ -2,10 +2,11 @@ import {THREE} from "./dependencies/three.mjs";
 import {FlipBehavior, makeTileFlipper} from "./tileFlipper.mjs";
 import {PuzzleState} from "./conditionBuilder.mjs";
 
-export const BoardEffects = {
+export const BoardEffect = {
     None: 1,
     FlipAll: 2,
-    FlipAdjacent: 4
+    FlipAdjacent: 4,
+    FlipCurrent: 8
 };
 
 export function createBoardInterfaceObject() {
@@ -17,17 +18,22 @@ export function createBoardInterfaceObject() {
         onMove(position) {
             this._correctPosition(position);
             if (!this._sameAsPreviousPosition(position)) {
+                this._applyTileEffect(this._boardTiles, position);
                 this._tileFlipper.flip(this._boardTiles, position);
                 this._numberOfMoves += 1;
             }
             this._setAsPreviousPosition(position);
             this._checkBoardConditions();
         },
-        onEffect(effect) {
+        onEffect(effect, position) {
             if (this._flipsAllTiles(effect)) {
-                this._boardTiles.forEach((tile) => {
-                    this._tileFlipper.flip(this._boardTiles, tile.position);
-                });
+                this._tileFlipper.flipAll(this._boardTiles);
+            }
+            if (this._flipsAdjacentTiles(effect)) {
+                this._tileFlipper.flipAdjacent(this._boardTiles, position);
+            }
+            if (this._flipsCurrentTile(effect)) {
+                this._tileFlipper.flipCurrent(this._boardTiles, position);
             }
         },
         // This could be improved with a tag
@@ -106,9 +112,24 @@ export function createBoardInterfaceObject() {
             }
             this._previousPosition.copy(position);
         },
+        _applyTileEffect(tiles, position) {
+            // This is the wrong pattern, the tile should have a useEffect method that triggers onEffect for the board
+            const tile = tiles.find((tile) => {
+                return tile.position.x === position.x &&
+                    tile.position.z === position.z;
+            });
+            this.onEffect(tile.effect, position);
+            tile.effect = BoardEffect.None;
+        },
+        _flipsAdjacentTiles(effect) {
+            return (effect & BoardEffect.FlipAdjacent) !== 0;
+        },
         _flipsAllTiles(effect) {
-            return (effect & BoardEffects.FlipAll) !== 0;
-        }
+            return (effect & BoardEffect.FlipAll) !== 0;
+        },
+        _flipsCurrentTile(effect) {
+            return (effect & BoardEffect.FlipCurrent) !== 0;
+        },
     };
     return Board;
 }

@@ -26,15 +26,12 @@ export const LevelBuilder = {
         const tiles = [];
         currentLevel.tiles.forEach((tile) => {
             const {
-                position: {
-                    x,
-                    y,
-                    z
-                },
-                flipped
+                position,
+                flipped,
+                effect
             } = tile;
 
-            const boardTile = makeTile(x, y, z, flipped);
+            const boardTile = makeTile({position, flipped, effect});
             tiles.push(boardTile);
             board.addTile(boardTile);
         });
