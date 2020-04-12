@@ -3,7 +3,7 @@
     "name": "level 1",
     "tiles": [
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -12,7 +12,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -27,7 +27,7 @@
         "y": 0.01,
         "z": 0
       },
-      "effect": "NONE"
+      "effect": 1
     },
     "board": {
       "flipBehavior": 2,
@@ -49,7 +49,7 @@
     "name": "level 2",
     "tiles": [
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -58,7 +58,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -67,7 +67,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -76,7 +76,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -91,7 +91,7 @@
         "y": 0.01,
         "z": 0
       },
-      "effect": "NONE"
+      "effect": 1
     },
     "board": {
       "flipBehavior": 2,
@@ -106,7 +106,7 @@
     "name": "level 3",
     "tiles": [
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -115,7 +115,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -124,7 +124,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -133,7 +133,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -142,7 +142,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -151,7 +151,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -160,7 +160,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -169,7 +169,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -178,7 +178,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -193,7 +193,7 @@
         "y": 0.01,
         "z": 0
       },
-      "effect": "NONE"
+      "effect": 1
     },
     "board": {
       "flipBehavior": 2,
@@ -215,7 +215,7 @@
     "name": "level 4",
     "tiles": [
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -224,7 +224,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -233,7 +233,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -242,7 +242,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -251,7 +251,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -260,7 +260,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -269,7 +269,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -278,7 +278,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -287,7 +287,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -302,7 +302,7 @@
         "y": 0.01,
         "z": -1
       },
-      "effect": "NONE"
+      "effect": 1
     },
     "board": {
       "flipBehavior": 2,
@@ -331,7 +331,7 @@
     "name": "level 5",
     "tiles": [
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -340,7 +340,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -349,7 +349,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -358,7 +358,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -367,7 +367,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -376,7 +376,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -385,7 +385,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -394,7 +394,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -403,7 +403,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -418,7 +418,7 @@
         "y": 0.01,
         "z": 1
       },
-      "effect": "FLIP_ALL"
+      "effect": 2
     },
     "board": {
       "flipBehavior": 2,
@@ -443,7 +443,7 @@
     "name": "level 6",
     "tiles": [
       {
-        "type": "FLIPPER",
+        "effect": 2,
         "position": {
           "x": 0,
           "y": 0,
@@ -452,7 +452,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -461,7 +461,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -470,7 +470,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -485,7 +485,7 @@
         "y": 0.01,
         "z": 1
       },
-      "effect": "NONE"
+      "effect": 1
     },
     "board": {
       "flipBehavior": 2,
@@ -507,7 +507,7 @@
     "name": "level 7",
     "tiles": [
       {
-        "type": "FLIPPER",
+        "effect": 2,
         "position": {
           "x": -1,
           "y": 0,
@@ -516,7 +516,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -525,7 +525,7 @@
         "flipped": false
       },
       {
-        "type": "FLIPPER",
+        "effect": 2,
         "position": {
           "x": 0,
           "y": 0,
@@ -534,7 +534,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -549,7 +549,7 @@
         "y": 0.01,
         "z": 0
       },
-      "effect": "NONE"
+      "effect": 1
     },
     "board": {
       "flipBehavior": 2,
@@ -567,7 +567,7 @@
     "name": "level 8",
     "tiles": [
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -576,7 +576,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -585,7 +585,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -594,7 +594,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -603,7 +603,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -2,
           "y": 0,
@@ -612,7 +612,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -621,7 +621,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -630,7 +630,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -639,7 +639,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 2,
           "y": 0,
@@ -648,7 +648,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -657,7 +657,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -666,7 +666,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -675,7 +675,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -690,7 +690,7 @@
         "y": 0.01,
         "z": -2
       },
-      "effect": "NONE"
+      "effect": 1
     },
     "board": {
       "flipBehavior": 3,
@@ -712,7 +712,7 @@
     "name": "level 9",
     "tiles": [
       {
-        "type": "ADJACENT",
+        "effect": 4,
         "position": {
           "x": -2,
           "y": 0,
@@ -721,7 +721,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -730,7 +730,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -739,7 +739,7 @@
         "flipped": true
       },
       {
-        "type": "ADJACENT",
+        "effect": 4,
         "position": {
           "x": 1,
           "y": 0,
@@ -748,7 +748,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -2,
           "y": 0,
@@ -757,7 +757,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -766,7 +766,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -775,7 +775,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -784,7 +784,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -2,
           "y": 0,
@@ -793,7 +793,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -802,7 +802,7 @@
         "flipped": false
       },
       {
-        "type": "ADJACENT",
+        "effect": 4,
         "position": {
           "x": 0,
           "y": 0,
@@ -811,7 +811,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -820,7 +820,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -2,
           "y": 0,
@@ -829,7 +829,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -838,7 +838,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -847,7 +847,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -862,7 +862,7 @@
         "y": 0.01,
         "z": 0
       },
-      "effect": "NONE"
+      "effect": 1
     },
     "board": {
       "flipBehavior": 2,
@@ -880,7 +880,7 @@
     "name": "level 10",
     "tiles": [
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -889,7 +889,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -2,
           "y": 0,
@@ -898,7 +898,7 @@
         "flipped": true
       },
       {
-        "type": "ADJACENT",
+        "effect": 4,
         "position": {
           "x": -1,
           "y": 0,
@@ -907,7 +907,7 @@
         "flipped": true
       },
       {
-        "type": "FLIPPER",
+        "effect": 2,
         "position": {
           "x": 1,
           "y": 0,
@@ -916,7 +916,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": -1,
           "y": 0,
@@ -925,7 +925,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -934,7 +934,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -943,7 +943,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 2,
           "y": 0,
@@ -952,7 +952,7 @@
         "flipped": false
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 0,
           "y": 0,
@@ -961,7 +961,7 @@
         "flipped": true
       },
       {
-        "type": "ADJACENT",
+        "effect": 4,
         "position": {
           "x": 1,
           "y": 0,
@@ -970,7 +970,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 2,
           "y": 0,
@@ -979,7 +979,7 @@
         "flipped": true
       },
       {
-        "type": "NORMAL",
+        "effect": 1,
         "position": {
           "x": 1,
           "y": 0,
@@ -994,7 +994,7 @@
         "y": 0.01,
         "z": 0
       },
-      "effect": "NONE"
+      "effect": 1
     },
     "board": {
       "flipBehavior": 2,

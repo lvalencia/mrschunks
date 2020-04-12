@@ -3,8 +3,9 @@ import {FlipBehavior, makeTileFlipper} from "./tileFlipper.mjs";
 import {PuzzleState} from "./conditionBuilder.mjs";
 
 export const BoardEffects = {
-    None: 'NONE',
-    FlipAll: 'FLIP_ALL'
+    None: 1,
+    FlipAll: 2,
+    FlipAdjacent: 4
 };
 
 export function createBoardInterfaceObject() {
@@ -23,13 +24,10 @@ export function createBoardInterfaceObject() {
             this._checkBoardConditions();
         },
         onEffect(effect) {
-            // use switch for now
-            switch(effect) {
-                case BoardEffects.FlipAll:
-                    this._boardTiles.forEach((tile) => {
-                        this._tileFlipper.flip(this._boardTiles, tile.position);
-                    });
-                    break;
+            if (this._flipsAllTiles(effect)) {
+                this._boardTiles.forEach((tile) => {
+                    this._tileFlipper.flip(this._boardTiles, tile.position);
+                });
             }
         },
         // This could be improved with a tag
@@ -107,6 +105,9 @@ export function createBoardInterfaceObject() {
                 this._previousPosition = new THREE.Vector3();
             }
             this._previousPosition.copy(position);
+        },
+        _flipsAllTiles(effect) {
+            return (effect & BoardEffects.FlipAll) !== 0;
         }
     };
     return Board;
