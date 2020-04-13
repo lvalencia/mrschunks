@@ -57,7 +57,17 @@ export const TileFlipper = {
         this._flipTiles(tilesToFlip);
     },
     flipCurrent(tiles, position) {
-        const tilesToFlip = tiles.filter((tile) => {
+        const tileToFlip = this._getCurrentTile(tiles, position);
+
+        this._flipTiles([tileToFlip]);
+    },
+    // This might not be right abstraction
+    applyEffect(tiles, position) {
+        const tile = this._getCurrentTile(tiles, position);
+        tile.useEffect();
+    },
+    _getCurrentTile(tiles, position) {
+        return tiles.find((tile) => {
             const {position: {x: tx, y: ty, z: tz}} = tile;
             const {x, y, z} = position;
 
@@ -68,11 +78,11 @@ export const TileFlipper = {
                 zB: tz
             });
         });
-
-        this._flipTiles(tilesToFlip);
     },
     _flipTiles(tiles) {
-        tiles.forEach(tile => tile.flip());
+        tiles.forEach((tile) => {
+            tile.flip()
+        });
     },
     _isCurrent({xA, xB, zA, zB}) {
         return xA === xB && zA === zB;

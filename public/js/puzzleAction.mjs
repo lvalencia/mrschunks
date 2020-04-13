@@ -94,23 +94,20 @@ const PuzzleAction = {
          * Prompt for next level or do a transition to next level
          * when there aren't any more indicate that it's finished
          */
-        this.currentHero.removeHeroEventsDelegates();
-        this.currentBoard.removeBoardEventsDelegates();
-
-        this.scene.remove(this.currentHero);
-        this.scene.remove(this.currentBoard);
-
-        // Debug Behavior should be moved into debug objects that no-op if we're not doing debug stuff
-        if (DEBUG) {
-            guiControlsHelper.removeTiles();
-            guiControlsHelper.removeTileFlipBehavior();
-        }
+        this._teardownCurrentLevel();
 
         this.shouldBuildNextLevel = true;
     },
     onFailed() {
+        this._teardownCurrentLevel();
+
+        this.currentLevel -= 1; // Redo Level
+        this.shouldBuildNextLevel = true;
+    },
+    _teardownCurrentLevel() {
         this.currentHero.removeHeroEventsDelegates();
         this.currentBoard.removeBoardEventsDelegates();
+        this.currentBoard.teardown();
 
         this.scene.remove(this.currentHero);
         this.scene.remove(this.currentBoard);
@@ -120,9 +117,6 @@ const PuzzleAction = {
             guiControlsHelper.removeTiles();
             guiControlsHelper.removeTileFlipBehavior();
         }
-
-        this.currentLevel -= 1; // Redo Level
-        this.shouldBuildNextLevel = true;
     }
 };
 

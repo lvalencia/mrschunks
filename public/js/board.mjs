@@ -18,7 +18,7 @@ export function createBoardInterfaceObject() {
         onMove(position) {
             this._correctPosition(position);
             if (!this._sameAsPreviousPosition(position)) {
-                this._applyTileEffect(this._boardTiles, position);
+                this._tileFlipper.applyEffect(this._boardTiles, position);
                 this._tileFlipper.flip(this._boardTiles, position);
                 this._numberOfMoves += 1;
             }
@@ -46,6 +46,9 @@ export function createBoardInterfaceObject() {
         },
         initialPosition(position) {
             this._setAsPreviousPosition(position);
+        },
+        teardown() {
+            this._boardTiles.forEach(tile => tile.removeTileEventsDelegates());
         },
         _checkBoardConditions() {
             const conditionArgs = {
@@ -111,15 +114,6 @@ export function createBoardInterfaceObject() {
                 this._previousPosition = new THREE.Vector3();
             }
             this._previousPosition.copy(position);
-        },
-        _applyTileEffect(tiles, position) {
-            // This is the wrong pattern, the tile should have a useEffect method that triggers onEffect for the board
-            const tile = tiles.find((tile) => {
-                return tile.position.x === position.x &&
-                    tile.position.z === position.z;
-            });
-            this.onEffect(tile.effect, position);
-            tile.effect = BoardEffect.None;
         },
         _flipsAdjacentTiles(effect) {
             return (effect & BoardEffect.FlipAdjacent) !== 0;

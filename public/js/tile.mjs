@@ -11,10 +11,27 @@ const {
 
 export function createTileInterfaceObject() {
     const TileInterface = {
+        useEffect() {
+            // One and Done for now
+            this.listeners.forEach(listener => {
+                if (typeof listener.onEffect === 'function') {
+                    listener.onEffect(this.effect, this.position);
+                }
+            });
+            this.effect = BoardEffect.None;
+        },
         flip() {
             this.rotation.x = degToRad((radToDeg(this.rotation.x) + 180) % 360);
             this._updateTileState();
             this._hasBeenFlippedAtLeastOnce = true;
+        },
+        // This listeners code is repeated a lot -- probably can be DRYed out
+        addTileEventsDelegate(listener) {
+            this.listeners.push(listener);
+        },
+        removeTileEventsDelegates() {
+            while (this.listeners.pop()) {
+            }
         },
         _updateTileState() {
             // right now just a boolean state
@@ -82,6 +99,7 @@ export function makeTile(args = {}) {
     return Object.setPrototypeOf({
         topColor: topPlaneMaterial.color,
         bottomColor: bottomPlaneMaterial.color,
-        effect
+        effect,
+        listeners: []
     }, tileInterfaceObject);
 }

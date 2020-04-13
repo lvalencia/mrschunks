@@ -32,6 +32,7 @@ export const LevelBuilder = {
             } = tile;
 
             const boardTile = makeTile({position, flipped, effect});
+            boardTile.addTileEventsDelegate(board);
             tiles.push(boardTile);
             board.addTile(boardTile);
         });
